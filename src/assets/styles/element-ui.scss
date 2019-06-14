@@ -1,0 +1,222 @@
+//to reset element-ui default css
+.el-upload {
+  input[type="file"] {
+    display: none !important;
+  }
+}
+
+.el-upload__input {
+  display: none;
+}
+
+//暂时性解决diolag 问题 https://github.com/ElemeFE/element/issues/2461
+.el-dialog {
+  transform: none;
+  left: 0;
+  position: relative;
+  margin: 0 auto;
+}
+
+//element ui upload
+.upload-container {
+  .el-upload {
+    width: 100%;
+
+    .el-upload-dragger {
+      width: 100%;
+      height: 200px;
+    }
+  }
+}
+
+.noborer {
+  border: 0 !important;
+}
+
+.peojectList .custom-dialog .el-form-item {
+  padding: 0 5px
+}
+
+.peojectList .el-upload,
+.peojectList .el-upload-dragger {
+  width: 98% !important;
+  margin-top: 10% !important;
+}
+
+.peojectList .el-upload__tip {
+  text-align: center;
+}
+
+.alarmSet .el-pagination,
+.building .el-pagination,
+.peojectList .el-pagination {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.pagination-container-left {
+  background: #fff;
+  padding: 32px 16px;
+}
+
+.el-pagination-left {
+  white-space: nowrap;
+  padding: 2px 5px 2px 0px;
+  color: #303133;
+  font-weight: 700;
+}
+
+.peojectList {
+
+  .custom-dialog .el-form-item input::-webkit-outer-spin-button,
+  .custom-dialog .el-form-item input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  .custom-dialog .el-form-item input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  .custom-dialog .el-form-item textarea {
+    height: 160px;
+  }
+}
+
+.protocol {
+  .borderDashed {
+    border: 1px dashed #DCDFE6;
+    line-height: 23px;
+  }
+
+  .width320 {
+    width: 320px;
+  }
+
+  .width450 {
+    width: 450px;
+  }
+
+  .marginLft10 {
+    margin-left: 10px;
+  }
+}
+
+//滚动条的宽度
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #eee;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #ccc
+}
+
+::-webkit-scrollbar-button {
+  background-color: #fff;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #fff;
+}
+
+.el-table thead {
+  color: #333;
+}
+
+.el-select {
+  width: 100%;
+}
+
+.el-table .cell {
+  white-space: nowrap;
+}
+
+.el-button,
+[type='text'] {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.el-tree {
+  width: 100%;
+
+  .el-tree-node__content {
+    height: 100%;
+    border-bottom: 1px dotted #eee;
+
+    .el-tree-node__expand-icon {
+      color: #00ffff;
+      font-weight: bold;
+      font-size: 18px;
+
+      &:before {
+        // content: "\E604";
+      }
+
+      &.is-leaf {
+        color: transparent;
+      }
+    }
+  }
+}
+
+.el-step__head.is-process {
+  color: #317dca;
+  border-color: #409eff;
+}
+
+.el-step__title {
+  font-size: 14px;
+}
+
+.el-step__title.is-process {
+  color: #409eff;
+  font-size: 16px;
+}
+
+.el-step__icon {
+  transform: scale(1.2)
+}
+
+.el-carousel {
+  padding-top: 10px;
+}
+
+.el-collapse {
+  border: none;
+}
+
+.el-collapse-item__wrap {
+  border: none;
+  background-color: transparent;
+}
+
+.el-collapse-item__header {
+  border: none;
+  background-color: transparent;
+  padding-left: 40px;
+}
+
+.el-collapse-item.is-active {
+  background-color: #f7f9fb;
+}
+
+.el-message {
+  z-index: 100000000 !important;
+}
+
+.el-scrollbar__wrap {
+  overflow-x: hidden;
+}
+
+.el-scrollbar__view {
+  width: 100%;
+
+}
+
+.el-menu {
+  border-right-width: 0;
+}
