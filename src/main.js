@@ -5,16 +5,16 @@ import store from './store'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import '@/assets/styles/index.scss'
-import { localStorage } from '@/utils'
+// import { localStorage } from '@/utils'
 
 // 导航守卫
-// router.beforeEach((to, from, next) => {
-//   if (localStorage('POMS_Token') || to.path === '/login') {
-//     next()
-//   } else {
-//     next('/login')
-//   }
-// })
+router.beforeEach((to, from, next) => {
+  if (store.state.token || to.path === '/login') {
+    next()
+  } else {
+    next('/login')
+  }
+})
 
 Vue.use(ElementUI)
 Vue.config.productionTip = false
