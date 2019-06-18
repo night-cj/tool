@@ -6,7 +6,7 @@ let baseURL = ''
 // baseURL = process.env.VUE_APP_BASE_API
 if (process.env.NODE_ENV === 'development') baseURL = 'http://47.110.58.220:10000'
 // if (process.env.NODE_ENV === 'development') baseURL = 'http://172.16.10.182:10000'
-else baseURL = 'http://47.110.58.220:10001'
+else baseURL = 'http://47.110.58.220:10000'
 // 创建axios实例
 const service = axios.create({
   baseURL: baseURL,

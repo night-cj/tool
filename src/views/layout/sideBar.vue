@@ -2,42 +2,37 @@
   <div class="menu">
     <el-menu
       class="el-menu-vertical-demo"
-      @open="handleOpen"
-      @close="handleClose"
       background-color="#314158"
       text-color="#bfcbd9"
       unique-opened
       router
       active-text-color="#409eff"
+      :default-active="$route.path"
+      @select="selectMenu"
     >
       <el-submenu :index="item.value" v-for="item in menu" :key="item.value">
         <template slot="title">
           <i class="el-icon-location"></i>
           {{ item.name }}
         </template>
-        <el-menu-item-group>
-          <template slot="title">
-            功能
-          </template>
-          <div v-for="subItem in item.children" :key="subItem.value">
-            <el-submenu :index="subItem.value" v-if="filterChildren(subItem)">
-              <template slot="title">
-                <i class="el-icon-s-operation"></i>
-                {{ subItem.name }}
-              </template>
-              <el-menu-item
-                :index="val.value"
-                v-for="val in subItem.children"
-                :key="val.value"
-                >{{ val.name }}</el-menu-item
-              >
-            </el-submenu>
-            <el-menu-item v-else :key="subItem.value">
+        <div v-for="subItem in item.children" :key="subItem.value">
+          <el-submenu :index="subItem.value" v-if="filterChildren(subItem)">
+            <template slot="title">
               <i class="el-icon-s-operation"></i>
               {{ subItem.name }}
-            </el-menu-item>
-          </div>
-        </el-menu-item-group>
+            </template>
+            <el-menu-item
+              :index="val.value"
+              v-for="val in subItem.children"
+              :key="val.value"
+              >{{ val.name }}</el-menu-item
+            >
+          </el-submenu>
+          <el-menu-item v-else :index="subItem.value">
+            <i class="el-icon-s-operation"></i>
+            {{ subItem.name }}
+          </el-menu-item>
+        </div>
       </el-submenu>
     </el-menu>
   </div>
@@ -48,7 +43,7 @@ export default {
   components: {},
   data () {
     return {
-      menu: [ // value: 路由的path
+      menu: [
         {
           name: '梅赛德斯-奔驰',
           value: 'MB',
@@ -59,59 +54,45 @@ export default {
               children: [
                 {
                   name: '空间(设备)',
-                  value: 'spaceDevTree'
+                  value: '/spaceDevTree/space'
                 },
                 {
                   name: '设备类型',
-                  value: 'deviceTypeTree'
+                  value: '/spaceDevTree/device'
                 },
                 {
                   name: '系统类型',
-                  value: 'systemTypeTree'
+                  value: '/spaceDevTree/system'
                 }
               ]
             },
             {
+              name: '上传文件',
+              value: '/upload'
+            },
+            {
               name: '手机App工具',
-              value: 'mobile'
+              value: '/mobile'
             }
           ]
         }
-        // {
-        //   name: '十六铺',
-        //   value: '16Pu',
-        //   children: [
-        //     {
-        //       name: '空间(设备)结构树2',
-        //       value: 'spaceDevTree'
-        //     }
-        //   ]
-        // }
       ]
     }
   },
   computed: {
-    develop () {
-      let project = this.$store.state.project
-      let val = this.menu.find(item => item.value === project).children[0].value
-      return val
-    }
   },
   watch: {},
   methods: {
-    handleOpen (key, keyPath) {
-      // console.log(key, keyPath)
-    },
-    handleClose (key, keyPath) {
-      // console.log(key, keyPath)
-    },
     filterChildren (data) {
       if (data.children && data.children.length !== 0) return true
       else return false
+    },
+    selectMenu (index) {
+      let idxArr = index.slice(1).split('/')
+      if (idxArr[0] === 'spaceDevTree') sessionStorage.setItem('Tool_Index', idxArr[1])
     }
   },
   created () {
-    // this.$router.push({ path: `/${this.develop}` })
   },
   mounted () { }
 }

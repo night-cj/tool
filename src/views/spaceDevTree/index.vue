@@ -10,30 +10,25 @@
         <span>: 设备</span>
       </div>
     </div>
-    <div class="btn flex flex-column">
-      <el-button
-        :type="item.type"
-        plain
-        v-for="item in treeTypeData"
-        :key="item.value"
-        class="m-b-10"
-        @click="changSelect(item.value)"
-        >{{ item.name }}</el-button
-      >
-    </div>
     <add-space
       v-model="showAdd"
+      :path="path"
       :oneLevel="treeData.length"
       :handleData="handleData"
       v-if="treeType === 'space'"
     ></add-space>
     <add-device-type
       v-model="showAdd"
+      :path="path"
       :handleData="handleData"
       :treeType="treeType"
       v-else
     ></add-device-type>
-    <add-device v-model="showAddDev" :handleData="handleData"></add-device>
+    <add-device
+      v-model="showAddDev"
+      :path="path"
+      :handleData="handleData"
+    ></add-device>
     <div class="add-box">
       <div class="tree-content">
         <div class="heads">
@@ -104,8 +99,9 @@ export default {
       treeData: [],
       deviceList: [],
       handleData: {},
+      path: '',
       space_dev: true,
-      treeType: 'space',
+      treeType: sessionStorage.getItem('Tool_Index'),
       treeTypeData: [
         {
           name: '空间(设备)结构',
@@ -144,6 +140,10 @@ export default {
     },
     showAddDev (val) {
       if (!val) this.handleData = {}
+    },
+    '$route' (to, from) {
+      // 对路由变化作出响应...
+      this.changSelect(to.params.id)
     }
   },
   methods: {
@@ -184,6 +184,10 @@ export default {
       })
     },
     async clickBtn (data) {
+      let path
+      if (data.node.location) path = data.node.location
+      if (data.node.spaceLable) path = data.node.spaceLable + '.' + data.node.name
+      if (path) this.path = path.split('.').join(' / ')
       switch (data.type) {
         case 'add':
           this.showAdd = true
@@ -280,7 +284,7 @@ export default {
 }
 .tip {
   position: absolute;
-  left: 0;
+  right: 0;
   top: 0;
   color: #999;
   padding: 6px;

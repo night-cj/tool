@@ -5,6 +5,7 @@
     :before-close="close"
     @close="close"
   >
+    <crumbs v-bind="$attrs"></crumbs>
     <el-form
       :model="form"
       :rules="rules"
@@ -69,6 +70,7 @@
 
 <script>
 import { SpaceAdd, SpaceUpdate } from '@/request/api.js'
+import crumbs from './crumbs'
 export default {
   props: {
     value: {
@@ -80,6 +82,7 @@ export default {
       default: 0
     }
   },
+  components: { crumbs },
   data () {
     return {
       dialogVisible: this.value,

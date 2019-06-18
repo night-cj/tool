@@ -5,6 +5,7 @@ const Login = () => import('@/views/login')
 const Home = () => import('@/views/home')
 const SpaceDevTree = () => import('@/views/spaceDevTree')
 const Mobile = () => import('@/views/mobile')
+const UpLoad = () => import('@/views/upload')
 
 Vue.use(Router)
 
@@ -22,7 +23,7 @@ export default new Router({
       path: '/',
       name: 'layout',
       component: Layout,
-      redirect: '/spaceDevTree',
+      redirect: '/spaceDevTree/space',
       children: [
         {
           path: '/home',
@@ -33,7 +34,7 @@ export default new Router({
           component: Home
         },
         {
-          path: '/spaceDevTree',
+          path: '/spaceDevTree/:id',
           name: 'spaceDevTree',
           meta: {
             title: '空间(设备)结构树'
@@ -47,6 +48,14 @@ export default new Router({
             title: '手机App'
           },
           component: Mobile
+        },
+        {
+          path: '/upload',
+          name: 'upload',
+          meta: {
+            title: '文件上传'
+          },
+          component: UpLoad
         }
       ]
     }

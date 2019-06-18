@@ -71,3 +71,21 @@ export const DeviceSystemTypeUpdateRank = params => request('put', '/api/DeviceS
 export const DeviceSystemTypeUpdate = params => request('put', '/api/DeviceSystemType/Update', params)
 // 获取所有系统类型
 export const DeviceSystemTypeGet = params => request('get', '/api/DeviceSystemType/Get', params)
+
+/* --------------------------------------- FileSet 文件集控制器 ---------------------------------------- */
+// 添加文件集
+export const FileSetAdd = params => request('post', '/api/FileSet/Add', params)
+// 添加文件集资源
+export const FileSetAddResource = params => request('post', '/api/FileSet/AddResource', params)
+// 删除文件集
+export const FileSetDelete = params => request('delete', '/api/FileSet/Delete', params)
+// 删除一组文件集
+export const FileSetDeleteBatch = params => request('delete', '/api/FileSet/DeleteBatch', params)
+// 删除一组文件集资源
+export const FileSetDeleteResource = params => request('delete', '/api/FileSet/DeleteResource', params)
+// 更新文件集
+export const FileSetUpdate = params => request('put', '/api/FileSet/Update', params)
+// 获取文件集
+export const FileSetGet = params => request('get', '/api/FileSet/Get', params)
+// 获取所有文件集
+export const FileSetGetAll = params => request('get', '/api/FileSet/GetAll', params)
